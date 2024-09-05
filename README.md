@@ -1,3 +1,5 @@
+Here's the updated `README.md` with the **Installation** section:
+
 ````markdown
 # Django Message Board
 
@@ -38,6 +40,7 @@ A message board application built with Django, featuring asynchronous task handl
    git clone https://github.com/yourusername/django-message-board.git
    cd django-message-board
    ```
+````
 
 2. **Create and activate a virtual environment:**
 
@@ -115,4 +118,7 @@ A message board application built with Django, featuring asynchronous task handl
 3. Make your changes and commit them: `git commit -m 'Add some feature'`.
 4. Push to the branch: `git push origin feature-branch-name`.
 5. Submit a pull request.
-````
+
+```
+
+```
