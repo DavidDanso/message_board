@@ -1,5 +1,3 @@
-Here's the updated `README.md` with the **Installation** section:
-
 ```markdown
 # Django Message Board
 
