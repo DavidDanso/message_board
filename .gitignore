@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# database dump file created by Redis
+dump.rdb
+
 # Distribution / packaging
 .Python
 build/

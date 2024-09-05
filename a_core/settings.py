@@ -147,18 +147,18 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ENVIRONMENT = 'development'
-POSTGRES_LOCALLY = True
+POSTGRES_LOCALLY = False
 
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_SIGNUP_REDIRECT_URL = "{% url 'account_signup' %}?next={% url 'profile-onboarding' %}"
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 
-if ENVIRONMENT == 'development' or POSTGRES_LOCALLY == True:
+if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+    EMAIL_HOST_USER = 'dg245575@gmail.com'
+    EMAIL_HOST_PASSWORD = 'mweg zazv slym lrhv'
     EMAIL_PORT = 587
     DEFAULT_FROM_EMAIL = 'MessageBoard'
     EMAIL_USE_TLS = True

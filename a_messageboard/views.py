@@ -1,3 +1,4 @@
+from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
@@ -19,6 +20,7 @@ def messageboard_view(request):
                 message.author = request.user
                 message.messageboard = messageboard
                 message.save()
+                send_email(message)
         else:
             messages.warning(request, 'You need to be Subscribed to send a message!')
         return redirect('messageboard')
@@ -37,3 +39,15 @@ def subscribe_view(request):
     else:
         messageboard.subscribers.remove(user)
     return redirect('messageboard')
+
+
+
+def send_email(message):
+    messageboard = message.messageboard
+    subscribers = messageboard.subscribers.all()
+
+    for subscriber in subscribers:
+        subject = f"New Message from {message.author.profile.name}"
+        body = f"{message.author.profile.name}: {message.body}\n\nRegards from\nMy Message Board"
+        email = EmailMessage(subject, body, to=[subscriber.email])
+        email.send()
