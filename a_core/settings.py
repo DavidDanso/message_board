@@ -165,3 +165,8 @@ if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
     ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# celery config
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True

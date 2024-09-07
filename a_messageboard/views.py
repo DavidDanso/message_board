@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import MessageBoard, Message
 from .forms import MessageCreationForm
+from .tasks import *
 
 # Create your views here.
 @login_required
@@ -49,5 +50,4 @@ def send_email(message):
     for subscriber in subscribers:
         subject = f"New Message from {message.author.profile.name}"
         body = f"{message.author.profile.name}: {message.body}\n\nRegards from\nMy Message Board"
-        email = EmailMessage(subject, body, to=[subscriber.email])
-        email.send()
+        send_email_task.delay(subject, body, subscriber.email)
