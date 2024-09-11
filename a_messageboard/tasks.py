@@ -9,3 +9,20 @@ def send_email_task(subject, body, emailaddress):
     email = EmailMessage(subject, body, to=[emailaddress])
     email.send()
     return emailaddress
+
+
+@shared_task(name='monthly_newsletter')
+def send_newsletter():
+    subject = "Your Monthly Newsletter"
+    
+    subscribers = MessageBoard.objects.get(id=1).subscribers.all()
+    
+    for subscriber in subscribers:
+        body = render_to_string('a_messageboard/newsletter.html', {'name': subscriber.profile.name})
+        email = EmailMessage( subject, body, to=[subscriber.email] )
+        email.content_subtype = "html"
+        email.send()
+    
+    current_month = datetime.now().strftime('%B') 
+    subscriber_count = subscribers.count()   
+    return f'{current_month} Newsletter to {subscriber_count} subs'
