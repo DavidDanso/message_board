@@ -19,8 +19,11 @@ start_redis:
 stop_redis:
 	brew services stop redis
 
-flower:
+start_flower:
 	celery -A a_core.celery_app flower
+
+auth_flower:
+	celery -A a_core.celery_app flower --basic_auth=admin:flower123
 
 collectstatic:
 	python manage.py collectstatic --noinput
