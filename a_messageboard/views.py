@@ -51,3 +51,5 @@ def send_email(message):
         subject = f"New Message from {message.author.profile.name}"
         body = f"{message.author.profile.name}: {message.body}\n\nRegards from\nMy Message Board"
         send_email_task.delay(subject, body, subscriber.email)
+
+

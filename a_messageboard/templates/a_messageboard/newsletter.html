@@ -3,11 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Newsletter Page</title>
+    <title>Monthly Newsletter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <h1>Hello, {{name}}</h1>
-    <p>Welcome to the monthly newsletter!</p>
-    <p>Stay tuned for updates and more information.</p>
+  <body class="bg-gray-100">
+    <div class="max-w-3xl mx-auto bg-white p-8 mt-10 rounded-lg shadow-lg">
+      <h1 class="text-3xl font-bold text-blue-600 text-center">
+        Hello, {{name}}
+      </h1>
+      <p class="text-lg text-gray-700 mt-6">
+        Welcome to our monthly newsletter! We're excited to share the latest
+        updates, news, and special content with you.
+      </p>
+      <p class="text-lg text-gray-700 mt-4">
+        Stay tuned for exclusive offers, insightful articles, and important
+        announcements designed just for you.
+      </p>
+      <p class="text-lg text-gray-700 mt-4">
+        Thank you for being part of our community!
+      </p>
+
+      <div class="border-t border-gray-300 mt-8 pt-6 text-center">
+        <p class="text-sm text-gray-500">
+          If you wish to unsubscribe, click
+          <a href="{{unsubscribe_link}}" class="text-blue-600 hover:underline"
+            >here</a
+          >.
+        </p>
+        <p class="text-sm text-gray-500 mt-2">
+          &copy; {{current_year}} Your Company. All rights reserved.
+        </p>
+      </div>
+    </div>
   </body>
 </html>
