@@ -15,7 +15,9 @@ def send_email_task(subject, body, emailaddress):
 def send_newsletter():
     subject = "Your Monthly Newsletter"
     
-    subscribers = MessageBoard.objects.get(id=1).subscribers.all()
+    subscribers = MessageBoard.objects.get(id=1).subscribers.filter(
+        profile__newsletter_subscribed=True,
+    )
     
     for subscriber in subscribers:
         body = render_to_string('a_messageboard/newsletter.html', {'name': subscriber.profile.name})

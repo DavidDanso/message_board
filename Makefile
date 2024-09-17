@@ -10,7 +10,7 @@ freeze:
 migrate:
 	python manage.py migrate
 
-makemigrations:
+migrations:
 	python manage.py makemigrations
 
 start_redis:

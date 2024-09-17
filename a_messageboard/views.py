@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import MessageBoard, Message
 from .forms import MessageCreationForm
+from django.contrib.auth.decorators import user_passes_test
 from .tasks import *
 
 # Create your views here.
@@ -53,3 +54,9 @@ def send_email(message):
         send_email_task.delay(subject, body, subscriber.email)
 
 
+def is_staff(user):
+    return user.is_staff
+
+@user_passes_test(is_staff)
+def newsletter_view(request):
+    return render(request, 'a_messageboard/newsletter.html')
